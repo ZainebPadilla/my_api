@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :articles do
+    resources :comments, only: [:index, :create]
+  end
+  resources :comments, only: [:update, :destroy]
+  
   devise_for :users,
              controllers: {
                sessions: 'users/sessions',
