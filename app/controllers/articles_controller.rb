@@ -8,7 +8,7 @@ class ArticlesController < ApplicationController
     if user_signed_in?
       articles = Article.where("private = ? OR user_id = ?", false, current_user.id)
     else
-      articles = Article.where(private: false)
+      articles = Article.all
     end
     render json: articles
   end
